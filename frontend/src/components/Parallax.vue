@@ -1,7 +1,5 @@
 <template>
-  <div class="main-container">
-    <h2>Piscis</h2>
-
+  <div class="parallax-container">
     <!-- background -->
     <div class="background">
       <div class="shootingStarContainer">
@@ -50,19 +48,69 @@
         <div class="fog"></div>
       </div>
     </div>
+    <div class="card-container-2">
+      <div
+        v-for="card in cards"
+        :key="card.id"
+        class="parallax-card"
+        :class="card.name"
+      >
+        <!-- :style="{ background: card.color, marginLeft: index * 20 + 'px' }" -->
+        <h2>{{ card.text }}</h2>
+        <SGVComponent :svgClass="card.class"
+          ><div :class="card.class" v-html="card.svg"></div>
+        </SGVComponent>
+      </div>
+    </div>
+  </div>
+</template>
 
-    <!-- svg path -->
-    <div class="svg-container">
-      <svg
-        width="485"
-        height="385"
+<script>
+import SGVComponent from './SVGComponent';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+export default {
+  components: { SGVComponent },
+  data() {
+    return {
+      cards: [
+        {
+          id: 2,
+          class: 'aries',
+          name: 'card2',
+          color: '#203B3F',
+          svg: `<svg width="100%" height="475" viewBox="0 0 831 475" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="pointOnearies" d="M139.998 151.687C198.192 141.212 252.275 120.468 311.701 120.468" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<path id="patharies" d="M716.033 448.187C692.453 441.113 672.15 428.154 651.365 415.234C626.337 399.676 600.07 385.53 575.672 369.025C566.077 362.535 554.065 354.531 542.099 354.531C533.768 354.531 526.229 356.761 517.446 356.761C482.87 356.761 447.005 363.291 412.764 367.91C382.327 372.017 352.155 371.595 321.585 372.494C280.929 373.69 240.469 374.6 199.807 374.6C189.429 374.6 176.468 372.477 166.358 374.724C161.853 375.725 155.986 378.818 151.864 379.06C146.7 379.364 139.779 377.597 135.14 380.175C126.893 384.756 115.706 386.635 106.77 390.21C85.8308 398.585 65.0903 407.109 43.8368 414.739C35.9787 417.56 12.4896 425.197 7.41488 432.578C6.59353 433.773 -1.28963 445.71 3.57446 445.71C6.88753 445.71 9.24147 438.184 10.8836 436.542C13.7576 433.668 18.1592 432.952 21.4138 430.348C23.8639 428.388 25.6557 422.124 27.4841 419.198C30.3664 414.587 37.6337 414.812 40.3681 411.394C43.2209 407.828 65.2327 409.387 70.3481 407.925C77.8766 405.774 87.681 399.851 95.001 395.784C104.032 390.767 114.395 390.562 123.866 387.856C132.279 385.452 129.565 376.233 129.565 368.654C129.565 326.273 129.435 284.928 137.246 243.035C142.759 213.463 138.484 184.885 138.484 154.953C138.484 154.666 155.55 129.108 161.279 120.39C176.577 97.1096 198.953 78.4109 216.531 56.8371C229.392 41.0536 246.23 28.2531 260.634 13.8493C276.433 -1.94923 267.954 25.0005 270.545 35.6529C274.051 50.0654 283.5 65.0713 289.004 79.1363C292.649 88.4516 298.545 99.8269 305.728 107.01C309.268 110.55 319.838 121.419 324.682 122.496C335.309 124.857 346.187 121.44 357.016 124.85C376.125 130.865 396.109 132.654 414.87 139.22C423.118 142.107 434.909 143.615 441.753 149.379C446.925 153.734 458.603 154.658 465.167 157.183C475.749 161.253 486.476 165.973 497.501 168.952C513.986 173.408 529.902 180.166 546.063 185.553C561.259 190.618 576.989 195.317 591.157 202.401C599.331 206.488 613.69 216.276 622.376 216.276C628.681 216.276 628.597 202.873 630.181 198.437C633.638 188.756 639.789 185.483 646.905 178.368C659.879 165.394 674.845 154.911 690.265 145.043C695.353 141.786 705.5 134.126 711.573 133.769C718.165 133.381 722.421 168.859 727.678 176.138C746.91 202.768 769.238 229.985 785.16 258.645C791.656 270.338 802.604 281.539 811.423 290.359C814.166 293.101 816.693 296.358 819.724 298.783C824.94 302.956 823.069 307.239 823.069 294.323" stroke="white" stroke-width="3" stroke-linecap="round"/>
+<ellipse id="pointTwoaries" cx="550" cy="354.5" rx="10" ry="8.5" fill="#D11C1C"/>
+<ellipse id="pointThreearies" cx="140" cy="383.5" rx="10" ry="8.5" fill="#D11C1C"/>
+<ellipse id="pointFouraries" cx="140" cy="151.5" rx="10" ry="8.5" fill="#D11C1C"/>
+<ellipse id="pointFivearies" cx="268" cy="8.5" rx="10" ry="8.5" fill="#D11C1C"/>
+<ellipse id="pointSixaries" cx="626" cy="213.5" rx="10" ry="8.5" fill="#D11C1C"/>
+<ellipse cx="821" cy="301.5" rx="10" ry="8.5" fill="#D11C1C"/>
+<path  d="M723.5 414L731.919 437.148H759.165L737.123 451.454L745.542 474.602L723.5 460.296L701.458 474.602L709.877 451.454L687.835 437.148H715.081L723.5 414Z" fill="#DAC719" id="stararies"/>
+<path d="M626.119 214.124C672.622 214.124 711.109 232.048 754.339 246.458C768.062 251.032 782.763 258.033 792.867 268.138C794.63 269.901 797.537 276.508 797.823 278.792C798.249 282.2 802.886 283.874 804.513 286.721C807.296 291.591 812.419 293.692 815.662 297.746C820.92 304.319 821.193 302.972 820.122 294.401" stroke="black" stroke-width="3" stroke-linecap="round"/>
+<path d="M626.119 214.124C672.622 214.124 711.109 232.048 754.339 246.458C768.062 251.032 782.763 258.033 792.867 268.138C794.63 269.901 797.537 276.508 797.823 278.792C798.249 282.2 802.886 283.874 804.513 286.721C807.296 291.591 812.419 293.692 815.662 297.746C820.92 304.319 821.193 302.972 820.122 294.401" stroke="white" stroke-width="3" stroke-linecap="round"/>
+</svg>
+`,
+        },
+        {
+          id: 1,
+          class: 'piscis',
+          name: 'card3',
+          color: '#203B3F',
+          svg: `<svg
+        width="100%" 
+        height="475"
         viewBox="0 0 485 385"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        class=""
+    
       >
         <path
-          id="path"
+          id="pathpiscis"
           d="M376.085 347.314C407.882 339.463 438.558 323.325 468.664 310.422C473.041 308.547 477.608 307.274 473.663 303.724C463.433 294.516 453.956 285.041 444.07 274.93C437.867 268.586 423.411 242.482 415.676 242.937C405.561 243.532 395.208 242.937 385.083 242.937C371.886 242.937 358.688 242.937 345.491 242.937C337.428 242.937 334.676 250.168 330.695 257.334C325.97 265.838 314.574 273.854 307.7 280.729C304.617 283.812 299.641 286.128 306.8 286.128C311.881 286.128 314.785 285.796 318.497 289.727C336.278 308.553 348.701 332.527 367.087 350.913C368.839 352.666 371.994 358.895 375.085 358.012C379.938 356.625 373.667 351.139 372.885 350.514C365.888 344.916 359.209 339.437 352.69 332.917C341.985 322.213 327.245 310.153 319.897 296.925C318.444 294.309 305.979 281.189 307.7 280.329C313.66 277.349 318.068 271.063 321.197 265.432C323.141 261.932 327.105 245.748 330.295 244.837C331.155 244.591 337.507 248.753 336.093 246.936C330.659 239.949 322.109 238.24 313.998 234.839C286.906 223.478 265.3 201.055 239.414 187.249C235.729 185.284 227.283 178.151 223.118 178.151C216.971 178.151 208.597 181.568 202.323 182.65C151.961 191.333 98.4347 188.962 49.456 199.846C46.7038 200.458 41.6059 204.345 46.7566 204.345C48.3805 204.345 48.5562 191.754 48.5562 190.748C48.5562 159.302 56.8449 125.561 62.1532 94.4695C64.4218 81.1821 69.852 67.0536 70.1515 53.5785C70.3888 42.9005 70.3597 33.0484 72.8509 22.5852C75.1032 13.1256 77.5936 23.2649 75.5503 23.3851C70.4923 23.6826 65.7423 23.151 60.7535 24.2849C48.6336 27.0394 33.7188 25.586 21.5621 23.785C19.9684 23.5489 6.10224 24.6134 5.46562 22.3853C2.9281 13.5039 13.1626 8.9882 20.6623 8.9882C35.8002 8.9882 50.0282 7.18859 65.6525 7.18859C69.1193 7.18859 88.9376 2.59935 83.5486 7.98842C80.003 11.5339 73.7507 18.0942 73.7507 23.3851"
           stroke="white"
           stroke-width="3"
@@ -70,7 +118,7 @@
         />
         <ellipse
           class="circle"
-          id="pointFive"
+          id="pointFivepiscis"
           cx="72"
           cy="25.5"
           rx="10"
@@ -79,7 +127,7 @@
         />
         <ellipse
           class="circle"
-          id="pointSix"
+          id="pointSixpiscis"
           cx="10"
           cy="8.5"
           rx="10"
@@ -88,7 +136,7 @@
         />
         <ellipse
           class="circle"
-          id="pointThree"
+          id="pointThreepiscis"
           cx="222"
           cy="181.5"
           rx="10"
@@ -97,7 +145,7 @@
         />
         <ellipse
           class="circle"
-          id="pointTwo"
+          id="pointTwopiscis"
           cx="414"
           cy="244.5"
           rx="10"
@@ -106,7 +154,7 @@
         />
         <ellipse
           class="circle"
-          id="pointOne"
+          id="pointOnepiscis"
           cx="475"
           cy="304.5"
           rx="10"
@@ -115,7 +163,7 @@
         />
         <ellipse
           class="circle"
-          id="point"
+          id="pointpiscis"
           cx="47"
           cy="202.5"
           rx="10"
@@ -124,7 +172,7 @@
         />
         <ellipse
           class="circle"
-          id="pointFour"
+          id="pointFourpiscis"
           cx="47"
           cy="202.5"
           rx="10"
@@ -134,256 +182,119 @@
         <path
           d="M376.5 324L384.919 347.148H412.165L390.123 361.454L398.542 384.602L376.5 370.296L354.458 384.602L362.877 361.454L340.835 347.148H368.081L376.5 324Z"
           fill="#DAC719"
-          id="star"
+          id="starpiscis"
         />
-      </svg>
-    </div>
-
-    <div
-      v-show="isModalActive"
-      class="modal-container"
-      @click.self="closeModal"
-    >
-      <div class="modal">
-        <div class="card">
-          <h2>{{ title }}</h2>
-          <h2>{{ artist }}</h2>
-        </div>
-        <button @click="closeModal" class="close-modal">Close Modal</button>
-      </div>
-    </div>
-
-    <!-- nav -->
-    <!-- <div id="nav">
-      <button id="pause">pause</button>
-      <input
-        id="progressSlider"
-        type="range"
-        min="0"
-        max="1"
-        value="0"
-        step="0.001"
-      />
-      <div id="time">0.00</div>
-    </div> -->
-  </div>
-</template>
-
-<script>
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin.js';
-
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
-export default {
+      </svg>`,
+        },
+      ],
+    };
+  },
   mounted() {
     this.animations();
   },
-  data() {
-    return {
-      isModalActive: false,
-      title: '',
-      artist: '',
-      // artInfo: [
-      //   { id: 1, name: 'one' },
-      //   { id: 2, name: 'two' },
-      //   { id: 3, name: 'three' },
-      //   { id: 4, name: 'four' },
-      //   { id: 5, name: 'five' },
-      //   { id: 6, name: 'six' },
-      //   { id: 7, name: 'seven' },
-      // ],
-    };
-  },
   methods: {
-    closeModal() {
-      this.isModalActive = !this.isModalActive;
-    },
     animations() {
-      //input slider
-      let select = (e) => document.querySelector(e);
-      // let selectAll = (e) => document.querySelectorAll(e);
-
-      // let progressSlider = select('#progressSlider');
-      // let time = select('#time');
-      // let pause = select('#pause');
-      // let star = select('#star');
-      let pointOne = select('#pointOne');
-      let pointTwo = select('#pointTwo');
-      let pointFour = select('#pointFour');
-      let pointThree = select('#pointThree');
-      let pointSix = select('#pointSix');
-      let pointFive = select('#pointFive');
-
-      let animation = gsap
-        .to('#star', {
-          duration: 16,
-          ease: 'none',
-
-          motionPath: {
-            path: '#path',
-            align: '#star',
-          },
-        })
-        .pause();
-
-      const showModal = () => {
-        setTimeout(() => {
-          this.isModalActive = !this.isModalActive;
-        }, 500);
-      };
-
-      // points
-      pointOne.addEventListener('click', () => {
-        this.title = 'Image One';
-        this.artist = 'Artist one';
-        animation.pause();
-        gsap.to(animation, {
-          progress: 0.08,
-          onComplete: showModal,
-        });
-      });
-      pointTwo.addEventListener('click', () => {
-        this.title = 'Image Two';
-        this.artist = 'Artist Two';
-        animation.pause();
-        gsap.to(animation, {
-          progress: 0.15,
-          onComplete: showModal,
-        });
+      const slides = document.querySelectorAll('.parallax-card');
+      slides.forEach(function (slide, index) {
+        slide.style.left = `${index * 100}%`;
       });
 
-      pointThree.addEventListener('click', () => {
-        this.title = 'Image Three';
-        this.artist = 'Artist Three';
-        animation.pause();
-        gsap.to(animation, {
-          progress: 0.57,
-          onComplete: showModal,
-        });
+      const singleCard = [];
+      this.cards.map((card) => {
+        if (card.name) {
+          singleCard.push(card.name);
+        }
       });
 
-      pointFour.addEventListener('click', () => {
-        this.title = 'Image Four';
-        this.artist = 'Artist Four';
-        animation.pause();
-        gsap.to(animation, {
-          progress: 0.7,
-          onComplete: showModal,
-        });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.parallax-container',
+          start: 'top top',
+          toggleActions: 'play none reverse pause',
+          scrub: true,
+          pinSpacing: true,
+          pin: '.parallax-container',
+          end: () =>
+            '+=' + document.querySelector('.parallax-card').offsetWidth * 2,
+        },
       });
 
-      pointFive.addEventListener('click', () => {
-        this.title = 'Image Quinto';
-        this.artist = 'Artist Quinto';
-
-        animation.pause();
-        gsap.to(animation, {
-          progress: 0.85,
-          onComplete: showModal,
+      // const reverseCardsArray = singleCard.reverse();
+      for (let i = 0; i < singleCard.length; i++) {
+        tl.to(`.${singleCard[i]}`, {
+          xPercent: -100,
+          opacity: 1,
         });
-      });
-      pointSix.addEventListener('click', () => {
-        this.title = 'Image sixth';
-        this.artist = 'Artist sixth';
-        animation.pause();
-        gsap.to(animation, {
-          progress: 0.94,
-          onComplete: showModal,
-        });
-      });
+      }
     },
   },
 };
 </script>
 
 <style scoped>
-.svg-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-
-#nav {
+.parallax-container {
+  height: 100vh;
   width: 100%;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  position: fixed;
-  bottom: 0;
-  height: 50px;
-  background: #333;
-  z-index: 10;
-}
-
-#nav div {
-  align-self: center;
-  font-size: 22px;
-}
-
-#progressSlider {
-  width: 600px;
-  margin-left: 16px;
-  margin-right: 16px;
-}
-
-button {
-  border-radius: 10px;
-  background: #ffc34c;
-  color: #444;
-  font-size: 14px;
-  margin: 10px;
+  margin: 0 auto;
+  background-color: cornsilk;
   font-weight: 700;
-  width: 5em;
+  overflow: hidden;
+  position: relative;
+}
+.card-container-2 {
+  height: 100%;
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
-#time {
-  width: 80px;
+.card-container-2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-container-2 h2 {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 66px;
+  width: 719px;
+  margin-right: auto;
+  margin-left: auto;
+  display: inline-block;
+}
+.card-content {
+  height: 100%;
+  width: 100%;
 }
 
-svg {
-  width: 700px;
-  height: 900px;
+/* test */
+.parallax-card {
+  transform: translateZ(300px);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-/* Modal */
-.modal-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+.parallax-card {
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  z-index: 10;
-  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 0 auto;
+  padding: 3rem;
+  display: grid;
   justify-content: center;
-  align-items: center;
-  transition: all 2s linear;
+  align-items: end;
+  line-height: 4rem;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
 }
-.modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: steelblue;
-  gap: 2rem;
-  max-width: 600px;
-  width: 100%;
-  height: 600px;
-  border-radius: 20px;
-}
-
 /* Stars */
 
 .background {
-  position: relative;
-  height: 700px;
+  /* position: relative; */
+  /* height: 700px; */
   overflow: hidden;
 }
 

@@ -4,9 +4,15 @@ import CaptureImg from '../views/CaptureImg.vue';
 import Contact from '../views/Contact.vue';
 import Home from '../views/Home.vue';
 import SVGPath from '../views/SVGPath.vue';
+import SVGPath2 from '../views/SVGPath2.vue';
 import Dashboard from '../views/Dashboard.vue';
 import BlogPage from '../views/BlogPage.vue';
 import Post from '../views/Post.vue';
+
+// Stadel
+
+import StadelWelcome from '../views/Stadel/StadelWelcome';
+import DiscoverPaint from '../views/Stadel/DiscoverPaint';
 
 Vue.use(VueRouter);
 
@@ -20,6 +26,11 @@ const routes = [
     path: '/svg-path',
     name: 'SVGPath',
     component: SVGPath,
+  },
+  {
+    path: '/svg-path-2',
+    name: 'SVGPath2',
+    component: SVGPath2,
   },
   {
     path: '/capture-img',
@@ -46,6 +57,18 @@ const routes = [
     path: '/blog',
     name: 'blog',
     component: BlogPage,
+  },
+
+  // stadel
+  {
+    path: '/welcome',
+    name: 'StadelWelcome',
+    component: StadelWelcome,
+  },
+  {
+    path: '/painting',
+    name: 'DiscoverPaint',
+    component: DiscoverPaint,
   },
 ];
 const router = new VueRouter({
