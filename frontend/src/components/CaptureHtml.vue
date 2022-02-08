@@ -16,7 +16,7 @@
       </div>
       <div @click="handleSecondSection" class="btn second-btn">Get boxes</div>
     </div>
-    <div @click="sendPicture" class="btn send-btn">send Img</div>
+    <!-- <div @click="sendPicture" class="btn send-btn">send Img</div> -->
   </div>
 </template>
 
@@ -38,6 +38,8 @@ export default {
     return {
       saveAs,
       img: '',
+      pixelAtXYOffset: null,
+      pixelAtXY: null,
     };
   },
   methods: {
@@ -52,9 +54,23 @@ export default {
 
     //  create one function for each section
     handleFirstSection() {
-      domtoimage.toBlob(document.getElementById('first-img')).then((blob) => {
-        this.img = blob;
-      });
+      // domtoimage.toBlob(document.getElementById('first-img')).then((blob) => {
+      //   this.img = blob;
+      //   console.log(this.img);
+      // });
+
+      var node = document.getElementById('first-img');
+      domtoimage
+        .toPng(node)
+        .then(function (dataUrl) {
+          // var img = new Image();
+          // img.src = dataUrl;
+          console.log(dataUrl);
+          // document.body.appendChild(img);
+        })
+        .catch(function (error) {
+          console.error('oops, something went wrong!', error);
+        });
     },
     handleSecondSection() {
       domtoimage
